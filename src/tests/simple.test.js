@@ -50,13 +50,20 @@ describe("Doctors page", () => {
     //wait for the modal window to be displayed
     await DoctorsPage.addDoctorModal.rootEl.waitForDisplayed();
     //fill in the form fields
-    await $("[name='Name']").setValue("John Doe");
-    await $("#DoctorMobile").setValue("0123456789");
-    await $("[name='Email']").setValue("doctoremail@sample.com");
-    await $('[name="Education"]').setValue("Cardiologist");
-    await $('[name="Designation"]').setValue("Cardiologist");
+    await DoctorsPage.addDoctorModal.input("name").setValue("John Doe");
+    await DoctorsPage.addDoctorModal.input("phone").setValue("0123456789");
+    await DoctorsPage.addDoctorModal
+      .input("email")
+      .setValue("doctoremail@sample.com");
+    await DoctorsPage.addDoctorModal
+      .input("education")
+      .setValue("Cardiologist");
+    await DoctorsPage.addDoctorModal
+      .input("designation")
+      .setValue("Cardiologist");
+
     //click on the save button
-    await $(".button-container button.e-primary").click();
+    await DoctorsPage.addDoctorModal.saveBtn.click();
     await expect(DoctorsPage.addDoctorModal.rootEl).not.toBeDisplayed();
     //to obtain the complete list of doctors and check that the new doctor is in the list
     const doctorList = await $$(".specialist-display .name");
@@ -69,7 +76,7 @@ describe("Doctors page", () => {
     //wait for the modal window to be displayed
     await DoctorsPage.addDoctorModal.rootEl.waitForDisplayed();
     //click on the close button
-    await $(".button-container :first-child").click();
+    await DoctorsPage.addDoctorModal.closeBtn.click();
     await expect(DoctorsPage.addDoctorModal.rootEl).not.toBeDisplayed();
   });
 });

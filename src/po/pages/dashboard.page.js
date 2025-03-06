@@ -1,10 +1,10 @@
-import SideMenuComponent from "../components/common/sidemenu.component";
+// import SideMenuComponent from "../components/common/sidemenu.component";
 import Page from "./page";
 
 class DashboardPage extends Page {
-  get sideMenu() {
-    return new SideMenuComponent();
-  }
+  // get sideMenu() {
+  //   return new SideMenuComponent();
+  // }
 
   open() {
     return super.open("dashboard");
